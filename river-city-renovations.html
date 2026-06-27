@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>River City Renovations | Louisville, KY</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --gold:        #C9982A;
+      --gold-light:  #F5D678;
+      --gold-dim:    #8A6A1A;
+      --gold-pale:   rgba(201,152,42,0.08);
+      --black:       #080808;
+      --black-card:  #111111;
+      --black-alt:   #161616;
+      --text-body:   #C8C4BC;
+      --text-muted:  #6A6560;
+      --text-bright: #EDE8DE;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--black);
+      color: var(--text-body);
+      overflow-x: hidden;
+    }
+
+    /* ── LOGO SVG ── */
+    .logo-svg { display: inline-block; vertical-align: middle; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      height: 64px;
+      background: rgba(8,8,8,0.97);
+      border-bottom: 1px solid rgba(201,152,42,0.18);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 3rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+    }
+
+    .nav-brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .nav-brand-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .nav-brand-sub {
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      background: var(--gold);
+      color: #000 !important;
+      padding: 0.45rem 1.1rem !important;
+      font-weight: 600 !important;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--gold-light) !important; color: #000 !important; }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 8rem 3rem 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 70% 50%, rgba(201,152,42,0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-fleur {
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-eyebrow {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 700;
+      color: var(--text-bright);
+      line-height: 1.08;
+      max-width: 780px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--gold);
+    }
+
+    .hero-sub {
+      font-size: 16px;
+      color: var(--text-muted);
+      line-height: 1.8;
+      max-width: 520px;
+      margin-bottom: 3rem;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 4rem;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: #000;
+      border: none;
+      padding: 0.85rem 2rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-radius: 1px;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .btn-primary:active { transform: translateY(0); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid rgba(201,152,42,0.45);
+      padding: 0.85rem 2rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-radius: 1px;
+      transition: border-color 0.2s, color 0.2s, transform 0.1s;
+    }
+
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold-light); transform: translateY(-1px); }
+
+    /* ── SLASH DIVIDER (signature) ── */
+    .slash-bar {
+      width: 100%;
+      height: 2px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slash-bar::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        98deg,
+        var(--gold) 0px, var(--gold) 48px,
+        transparent 48px, transparent 72px
+      );
+      opacity: 0.45;
+    }
+
+    /* ── STATS ── */
+    .stats-band {
+      background: var(--black-card);
+      border-top: 1px solid rgba(201,152,42,0.12);
+      border-bottom: 1px solid rgba(201,152,42,0.12);
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0;
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 2.5rem 3.5rem;
+      border-right: 1px solid rgba(201,152,42,0.1);
+      flex: 1 1 160px;
+    }
+
+    .stat-item:last-child { border-right: none; }
+
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .stat-suffix { font-size: 1.6rem; color: var(--gold-dim); }
+
+    .stat-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+    }
+
+    /* ── SECTION BASE ── */
+    section { padding: 6rem 3rem; }
+    .section-alt { background: var(--black-alt); }
+
+    .section-eyebrow {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 700;
+      color: var(--text-bright);
+      line-height: 1.15;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-rule {
+      width: 40px;
+      height: 2px;
+      background: var(--gold);
+      opacity: 0.6;
+      margin-bottom: 2rem;
+    }
+
+    .section-lead {
+      font-size: 15px;
+      color: var(--text-body);
+      line-height: 1.8;
+      max-width: 600px;
+    }
+
+    /* ── SERVICES ── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 1px;
+      margin-top: 3rem;
+      border: 1px solid rgba(201,152,42,0.1);
+      background: rgba(201,152,42,0.1);
+    }
+
+    .svc-card {
+      background: var(--black-card);
+      padding: 1.75rem 1.5rem;
+      transition: background 0.2s;
+      cursor: default;
+    }
+
+    .svc-card:hover { background: #181510; }
+
+    .svc-icon {
+      width: 36px;
+      height: 36px;
+      margin-bottom: 1rem;
+      color: var(--gold);
+      opacity: 0.9;
+    }
+
+    .svc-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-bright);
+      letter-spacing: 0.03em;
+      margin-bottom: 0.4rem;
+    }
+
+    .svc-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 4rem;
+      margin-top: 3rem;
+      align-items: start;
+    }
+
+    .about-points { list-style: none; margin-top: 1.75rem; }
+
+    .about-points li {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(201,152,42,0.08);
+    }
+
+    .about-points li:last-child { border-bottom: none; }
+
+    .check-icon {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      color: var(--gold);
+      margin-top: 1px;
+    }
+
+    .about-text { font-size: 14px; color: var(--text-body); line-height: 1.65; }
+    .about-text strong { color: var(--text-bright); font-weight: 600; }
+
+    .about-right { display: flex; flex-direction: column; gap: 1.25rem; }
+
+    .quote-block {
+      background: var(--black-card);
+      border-left: 3px solid var(--gold);
+      padding: 1.75rem;
+    }
+
+    .quote-block p {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      color: var(--text-bright);
+      line-height: 1.75;
+      font-style: italic;
+    }
+
+    .quote-block cite {
+      display: block;
+      margin-top: 1rem;
+      font-size: 11px;
+      font-style: normal;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .clients-box {
+      background: var(--black-card);
+      border: 1px solid rgba(201,152,42,0.12);
+      padding: 1.5rem;
+    }
+
+    .clients-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .client-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .client-tag {
+      font-size: 11px;
+      color: var(--text-muted);
+      border: 1px solid rgba(201,152,42,0.2);
+      padding: 0.35rem 0.85rem;
+      letter-spacing: 0.04em;
+    }
+
+    .correspondence-box {
+      background: var(--black-card);
+      border: 1px solid rgba(201,152,42,0.12);
+      padding: 1.5rem;
+    }
+
+    .corr-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid rgba(201,152,42,0.08);
+      font-size: 13px;
+      color: var(--text-body);
+    }
+
+    .corr-item:last-child { border-bottom: none; }
+
+    .corr-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    /* ── FORMS ── */
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 2.5rem;
+    }
+
+    .form-full { grid-column: 1 / -1; }
+
+    .form-group { display: flex; flex-direction: column; gap: 0.45rem; }
+
+    .form-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+      background: var(--black-card);
+      border: 1px solid rgba(201,152,42,0.18);
+      color: var(--text-bright);
+      padding: 0.7rem 1rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      border-radius: 0;
+      outline: none;
+      width: 100%;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+    }
+
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus { border-color: var(--gold); }
+
+    .form-input::placeholder,
+    .form-textarea::placeholder { color: var(--text-muted); }
+
+    .form-select { cursor: pointer; }
+    .form-select option { background: #111; }
+    .form-textarea { resize: vertical; min-height: 110px; }
+
+    .form-actions {
+      margin-top: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .form-note { font-size: 12px; color: var(--text-muted); }
+
+    .success-banner {
+      display: none;
+      margin-top: 1rem;
+      background: rgba(201,152,42,0.07);
+      border: 1px solid rgba(201,152,42,0.28);
+      color: var(--gold-light);
+      padding: 0.85rem 1.1rem;
+      font-size: 13px;
+      border-left: 3px solid var(--gold);
+    }
+
+    /* ── CONTACT ── */
+    .contact-cols {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 4rem;
+      margin-top: 3rem;
+      align-items: start;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      padding: 1.1rem 0;
+      border-bottom: 1px solid rgba(201,152,42,0.08);
+    }
+
+    .contact-item:last-child { border-bottom: none; }
+
+    .contact-icon-wrap {
+      width: 32px;
+      height: 32px;
+      flex-shrink: 0;
+      color: var(--gold);
+      margin-top: 2px;
+    }
+
+    .contact-item-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .contact-item-val {
+      font-size: 15px;
+      color: var(--text-bright);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #040404;
+      border-top: 1px solid rgba(201,152,42,0.12);
+      padding: 2.5rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+    }
+
+    .footer-left { display: flex; align-items: center; gap: 1rem; }
+
+    .footer-brand-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .footer-tagline {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+      letter-spacing: 0.06em;
+    }
+
+    .footer-right { font-size: 12px; color: var(--text-muted); text-align: right; line-height: 1.8; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 0 1.5rem; }
+      .nav-links { display: none; }
+      section { padding: 4rem 1.5rem; }
+      #hero { padding: 7rem 1.5rem 4rem; }
+      .about-grid, .contact-cols { grid-template-columns: 1fr; gap: 2rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .stat-item { padding: 2rem 2rem; }
+      footer { padding: 2rem 1.5rem; flex-direction: column; align-items: flex-start; }
+      .footer-right { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════ NAV ═══════ -->
+<nav>
+  <a class="nav-brand" href="#hero">
+    <!-- Inline fleur SVG matching the logo -->
+    <svg class="logo-svg" width="28" height="34" viewBox="0 0 120 146" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M60 2C60 2 42 20 42 42C42 58 52 68 60 72C68 68 78 58 78 42C78 20 60 2 60 2Z" fill="#C9982A"/>
+      <path d="M60 72C60 72 36 60 18 68C6 74 2 86 8 96C14 106 28 106 38 100C32 92 34 80 46 76L60 72Z" fill="#C9982A"/>
+      <path d="M60 72C60 72 84 60 102 68C114 74 118 86 112 96C106 106 92 106 82 100C88 92 86 80 74 76L60 72Z" fill="#C9982A"/>
+      <rect x="50" y="96" width="20" height="8" fill="#C9982A"/>
+      <path d="M48 104L52 124L60 132L68 124L72 104H48Z" fill="#C9982A"/>
+      <rect x="40" y="92" width="40" height="6" rx="1" fill="#080808"/>
+      <rect x="44" y="96" width="32" height="3" fill="#080808"/>
+    </svg>
+    <div class="nav-brand-text">
+      <span class="nav-brand-title">River City</span>
+      <span class="nav-brand-sub">Renovations</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a class="nav-cta" href="#quote">Free Quote</a></li>
+  </ul>
+</nav>
+
+<!-- ═══════ HERO ═══════ -->
+<section id="hero">
+  <div class="hero-fleur">
+    <!-- Large hero fleur -->
+    <svg width="72" height="88" viewBox="0 0 120 146" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M60 2C60 2 42 20 42 42C42 58 52 68 60 72C68 68 78 58 78 42C78 20 60 2 60 2Z" fill="#C9982A"/>
+      <path d="M60 72C60 72 36 60 18 68C6 74 2 86 8 96C14 106 28 106 38 100C32 92 34 80 46 76L60 72Z" fill="#C9982A"/>
+      <path d="M60 72C60 72 84 60 102 68C114 74 118 86 112 96C106 106 92 106 82 100C88 92 86 80 74 76L60 72Z" fill="#C9982A"/>
+      <rect x="50" y="96" width="20" height="8" fill="#C9982A"/>
+      <path d="M48 104L52 124L60 132L68 124L72 104H48Z" fill="#C9982A"/>
+      <rect x="40" y="92" width="40" height="6" rx="1" fill="#080808"/>
+      <rect x="44" y="96" width="32" height="3" fill="#080808"/>
+    </svg>
+  </div>
+  <div class="hero-eyebrow">Louisville's Trusted Contractor · Serving the Area for Over 20 Years</div>
+  <h1>Built on <em>Craftsmanship,</em><br>Backed by Trust.</h1>
+  <p class="hero-sub">River City Renovations handles residential and commercial property maintenance and repairs — done right, on time, and with the communication you deserve.</p>
+  <div class="hero-ctas">
+    <button class="btn-primary" onclick="document.getElementById('quote').scrollIntoView({behavior:'smooth'})">Request a Free Quote</button>
+    <button class="btn-outline" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">View Our Services</button>
+  </div>
+</section>
+
+<!-- ═══════ SLASH + STATS ═══════ -->
+<div class="slash-bar"></div>
+<div class="stats-band">
+  <div class="stat-item">
+    <div class="stat-number"><span class="count" data-target="20">0</span><span class="stat-suffix">+</span></div>
+    <div class="stat-label">Years Serving Louisville</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number"><span class="count" data-target="500">0</span><span class="stat-suffix">+</span></div>
+    <div class="stat-label">Projects Completed</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number"><span class="count" data-target="24">0</span><span class="stat-suffix">hr</span></div>
+    <div class="stat-label">Response Guarantee</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number"><span class="count" data-target="4">0</span><span class="stat-suffix">+</span></div>
+    <div class="stat-label">Client Types Served</div>
+  </div>
+</div>
+<div class="slash-bar"></div>
+
+<!-- ═══════ SERVICES ═══════ -->
+<section id="services">
+  <div class="section-eyebrow">What We Do</div>
+  <div class="section-title">Services Provided</div>
+  <div class="section-rule"></div>
+  <p class="section-lead">Our services include but are not limited to the following. If you don't see what you need, give us a call — chances are we can help.</p>
+
+  <div class="services-grid">
+
+    <div class="svc-card">
+      <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20 6h-4M4 6h10M4 18h16M12 12H4M20 12h-4M14 9v6"/>
+      </svg>
+      <div class="svc-name">Interior & Exterior Painting</div>
+      <div class="svc-desc">Walls, trim, ceilings, and siding — clean, lasting finishes on every job.</div>
+    </div>
+
+    <div class="svc-card">
+      <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 15h6M9 12h6"/>
+      </svg>
+      <div class="svc-name">Drywall Repair</div>
+      <div class="svc-desc">Patches, holes, and full panel work finished seamlessly.</div>
+    </div>
+
+    <div class="svc-card">
+      <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+      </svg>
+      <div class="svc-name">Electrical</div>
+      <div class="svc-desc">Residential and commercial electrical service and repair.</div>
+    </div>
+
+    <div class="svc-card">
+      <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+      </svg>
+      <div class="svc-name">Trim & Siding Repair</div>
+      <div class="svc-desc">Restore your home's exterior to like-new condition.</div>
+    </div>
+
+    <div class="svc-card">
+      <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M2 20h20M4 20V10l8-8 8 8v10"/><path d="M10 20v-5h4v5"/>
+      </svg>
+      <div class="svc-name">Roof Installation & Repair</div>
+      <div class="svc-desc">Full roof installation, repair, and maintenance services.</div>
+    </div>
+
+    <div class="svc-card">
+      <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z"/><path d="M12 6v6l4 2"/>
+      </svg>
+      <div class="svc-name">Drainage Solutions</div>
+      <div class="svc-desc">Protect your property from water damage and runoff issues.</div>
+    </div>
+
+    <div class="svc-card">
+      <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="3" width="20" height="5" rx="1"/><path d="M4 8v13M20 8v13M8 21h8"/>
+      </svg>
+      <div class="svc-name">Soffit Repair</div>
+      <div class="svc-desc">Repair and replacement to protect your roofline and eaves.</div>
+    </div>
+
+    <div class="svc-card">
+      <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 12a8 8 0 018-8M4 12a8 8 0 0016 0"/><path d="M12 4v4M12 16v4M4 12H2M22 12h-2"/>
+      </svg>
+      <div class="svc-name">Pressure Washing</div>
+      <div class="svc-desc">Driveways, siding, decks, and more — restored and spotless.</div>
+    </div>
+
+    <div class="svc-card">
+      <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 6h16M6 6a10 10 0 0012 0M5 6v3a7 7 0 0014 0V6"/><line x1="12" y1="15" x2="12" y2="20"/>
+      </svg>
+      <div class="svc-name">Gutter Cleaning</div>
+      <div class="svc-desc">Keep water flowing where it should — away from your home.</div>
+    </div>
+
+    <div class="svc-card">
+      <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="16" width="20" height="2" rx="1"/><line x1="4" y1="16" x2="4" y2="10"/><line x1="8" y1="16" x2="8" y2="10"/>
+        <line x1="12" y1="16" x2="12" y2="10"/><line x1="16" y1="16" x2="16" y2="10"/><line x1="20" y1="16" x2="20" y2="10"/>
+        <path d="M2 10h20"/>
+      </svg>
+      <div class="svc-name">Deck Construction & Repair</div>
+      <div class="svc-desc">New builds, repairs, and refinishing for any outdoor space.</div>
+    </div>
+
+  </div>
+</section>
+
+<div class="slash-bar"></div>
+
+<!-- ═══════ ABOUT ═══════ -->
+<section id="about" class="section-alt">
+  <div class="section-eyebrow">Our Story</div>
+  <div class="section-title">About River City Renovations</div>
+  <div class="section-rule"></div>
+  <p class="section-lead">Over 20 years of trusted service to Louisville homeowners, property managers, real estate agents, and HOA boards. Every project, every time.</p>
+
+  <div class="about-grid">
+    <div>
+      <ul class="about-points">
+        <li>
+          <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <span class="about-text"><strong>Professional, clean, and timely.</strong> Every project is treated with the care and respect your property deserves.</span>
+        </li>
+        <li>
+          <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <span class="about-text"><strong>Relationships built on trust.</strong> We value the long-term connections we build with our clients, founded on honesty and accountability.</span>
+        </li>
+        <li>
+          <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <span class="about-text"><strong>Experienced professionals.</strong> Our crew brings years of hands-on field experience to every project.</span>
+        </li>
+        <li>
+          <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <span class="about-text"><strong>Communication you can count on.</strong> Response within 24 hours, progress updates throughout, and before/after photos available on request.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="about-right">
+      <div class="quote-block">
+        <p>"We believe the best work comes from genuine relationships. Every property we touch is someone's investment — and we treat it that way."</p>
+        <cite>— Ken Goodlett, Owner · River City Renovations</cite>
+      </div>
+
+      <div class="clients-box">
+        <div class="clients-label">Who We Work With</div>
+        <div class="client-tags">
+          <span class="client-tag">Property Managers</span>
+          <span class="client-tag">Real Estate Agents</span>
+          <span class="client-tag">HOA Boards</span>
+          <span class="client-tag">Homeowners</span>
+        </div>
+      </div>
+
+      <div class="correspondence-box">
+        <div class="clients-label">Our Commitment to You</div>
+        <div class="corr-item"><span class="corr-dot"></span>Response within 24 hours</div>
+        <div class="corr-item"><span class="corr-dot"></span>Regular progress updates throughout your project</div>
+        <div class="corr-item"><span class="corr-dot"></span>Before and after photos provided on request</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="slash-bar"></div>
+
+<!-- ═══════ QUOTE ═══════ -->
+<section id="quote">
+  <div class="section-eyebrow">Get Started</div>
+  <div class="section-title">Request a Free Quote</div>
+  <div class="section-rule"></div>
+  <p class="section-lead">Fill out the form below and we'll get back to you within 24 hours to discuss your project.</p>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label class="form-label" for="q-name">Full Name</label>
+      <input class="form-input" id="q-name" type="text" placeholder="Jane Smith">
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="q-phone">Phone Number</label>
+      <input class="form-input" id="q-phone" type="tel" placeholder="(502) 555-0100">
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="q-email">Email Address</label>
+      <input class="form-input" id="q-email" type="email" placeholder="jane@example.com">
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="q-type">Client Type</label>
+      <select class="form-select" id="q-type">
+        <option value="">Select one...</option>
+        <option>Homeowner</option>
+        <option>Property Manager</option>
+        <option>Real Estate Agent</option>
+        <option>HOA Board</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="q-service">Service Needed</label>
+      <select class="form-select" id="q-service">
+        <option value="">Select a service...</option>
+        <option>Painting (Interior / Exterior)</option>
+        <option>Drywall Repair</option>
+        <option>Electrical</option>
+        <option>Trim & Siding Repair</option>
+        <option>Roof Installation / Repair</option>
+        <option>Drainage Solutions</option>
+        <option>Soffit Repair</option>
+        <option>Pressure Washing</option>
+        <option>Gutter Cleaning</option>
+        <option>Deck Construction / Repair</option>
+        <option>Multiple Services / Other</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="q-address">Property Address</label>
+      <input class="form-input" id="q-address" type="text" placeholder="Louisville, KY">
+    </div>
+    <div class="form-group form-full">
+      <label class="form-label" for="q-details">Project Details</label>
+      <textarea class="form-textarea" id="q-details" placeholder="Describe your project — scope, timeline, any specific concerns..."></textarea>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <button class="btn-primary" onclick="submitForm('quote')">Submit Request</button>
+    <span class="form-note">We respond within 24 hours, guaranteed.</span>
+  </div>
+  <div class="success-banner" id="quote-success">
+    ✓ &nbsp;Your quote request has been received. We'll be in touch within 24 hours.
+  </div>
+</section>
+
+<div class="slash-bar"></div>
+
+<!-- ═══════ CONTACT ═══════ -->
+<section id="contact" class="section-alt">
+  <div class="section-eyebrow">Reach Us</div>
+  <div class="section-title">Contact</div>
+  <div class="section-rule"></div>
+
+  <div class="contact-cols">
+    <div>
+      <div class="contact-item">
+        <svg class="contact-icon-wrap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91A16 16 0 0016.09 17.9l1.09-1.09a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+        </svg>
+        <div>
+          <div class="contact-item-label">Phone</div>
+          <div class="contact-item-val">(502) 345-9060</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <svg class="contact-icon-wrap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+        </svg>
+        <div>
+          <div class="contact-item-label">Email</div>
+          <div class="contact-item-val">Ken.goodlett1@gmail.com</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <svg class="contact-icon-wrap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+        </svg>
+        <div>
+          <div class="contact-item-label">Service Area</div>
+          <div class="contact-item-val">Louisville, KY &amp; surrounding areas</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <svg class="contact-icon-wrap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+        </svg>
+        <div>
+          <div class="contact-item-label">Response Time</div>
+          <div class="contact-item-val">Within 24 hours, guaranteed</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-eyebrow" style="margin-bottom:1.25rem">Send a Message</div>
+      <div class="form-row" style="margin-top:0">
+        <div class="form-group">
+          <label class="form-label" for="c-name">Name</label>
+          <input class="form-input" id="c-name" type="text" placeholder="Your name">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="c-email">Email</label>
+          <input class="form-input" id="c-email" type="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group form-full">
+          <label class="form-label" for="c-msg">Message</label>
+          <textarea class="form-textarea" id="c-msg" placeholder="What can we help you with?"></textarea>
+        </div>
+      </div>
+      <div class="form-actions">
+        <button class="btn-primary" onclick="submitForm('contact')">Send Message</button>
+      </div>
+      <div class="success-banner" id="contact-success">
+        ✓ &nbsp;Message received. We'll be in touch shortly.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer>
+  <div class="footer-left">
+    <svg width="22" height="28" viewBox="0 0 120 146" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M60 2C60 2 42 20 42 42C42 58 52 68 60 72C68 68 78 58 78 42C78 20 60 2 60 2Z" fill="#C9982A"/>
+      <path d="M60 72C60 72 36 60 18 68C6 74 2 86 8 96C14 106 28 106 38 100C32 92 34 80 46 76L60 72Z" fill="#C9982A"/>
+      <path d="M60 72C60 72 84 60 102 68C114 74 118 86 112 96C106 106 92 106 82 100C88 92 86 80 74 76L60 72Z" fill="#C9982A"/>
+      <rect x="50" y="96" width="20" height="8" fill="#C9982A"/>
+      <path d="M48 104L52 124L60 132L68 124L72 104H48Z" fill="#C9982A"/>
+    </svg>
+    <div>
+      <div class="footer-brand-text">River City Renovations</div>
+      <div class="footer-tagline">Serving Louisville for over 20 years</div>
+    </div>
+  </div>
+  <div class="footer-right">
+    (502) 345-9060<br>
+    Ken.goodlett1@gmail.com<br>
+    <span style="color: #3A3530; font-size:11px">© 2025 River City Renovations. All rights reserved.</span>
+  </div>
+</footer>
+
+<script>
+  // Counter animation
+  const counters = document.querySelectorAll('.count');
+  let fired = false;
+
+  const band = document.querySelector('.stats-band');
+  const io = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting && !fired) {
+      fired = true;
+      counters.forEach(el => {
+        const target = +el.dataset.target;
+        const dur = 1600;
+        const step = target / (dur / 16);
+        let cur = 0;
+        const t = setInterval(() => {
+          cur += step;
+          if (cur >= target) { el.textContent = target; clearInterval(t); return; }
+          el.textContent = Math.floor(cur);
+        }, 16);
+      });
+    }
+  }, { threshold: 0.5 });
+
+  if (band) io.observe(band);
+
+  // Form submissions
+  function submitForm(id) {
+    const nameId = id === 'quote' ? 'q-name' : 'c-name';
+    const nameEl = document.getElementById(nameId);
+    if (!nameEl.value.trim()) { nameEl.focus(); return; }
+
+    const btn = document.querySelector(`#${id} .btn-primary`);
+    btn.disabled = true;
+    btn.style.opacity = '0.5';
+    btn.style.cursor = 'default';
+
+    const banner = document.getElementById(`${id}-success`);
+    banner.style.display = 'block';
+    banner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+</script>
+</body>
+</html>
